@@ -27,7 +27,6 @@ public class UserService {
         newUser.setFirstName(user.getFirstName());
         newUser.setLastName(user.getLastName());
         newUser.setAge(user.getAge());
-        System.out.println(user.getRole());
         newUser.setRole(user.getRole());
         userRepository.save(newUser);
         return TokenService.generateToken(newUser);
@@ -44,9 +43,6 @@ public class UserService {
             throw new AuthException("User with given credentials is not found");
         }
         if (!checkPassword(plainPassword, user.get().getPassword())) {
-            System.out.println("??????????" + plainPassword);
-            System.out.println("//////" + user.get().getPassword());
-            System.out.println("//////" + encodePassword(plainPassword));
             throw new AuthException("Credentials are not valid");
         }
     }

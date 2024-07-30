@@ -14,7 +14,6 @@ public class AuthDtoConverter {
         userData.setPassword(dto.getUserPassword());
         userData.setFirstName(dto.getUserFirstName());
         userData.setLastName(dto.getUserLastName());
-        System.out.println("??????????" + dto.getUserRole());
         userData.setRole(dto.getUserRole());
 
         return userData;
