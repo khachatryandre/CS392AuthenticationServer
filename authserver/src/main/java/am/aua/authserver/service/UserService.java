@@ -27,6 +27,8 @@ public class UserService {
         newUser.setFirstName(user.getFirstName());
         newUser.setLastName(user.getLastName());
         newUser.setAge(user.getAge());
+        System.out.println(user.getRole());
+        newUser.setRole(user.getRole());
         userRepository.save(newUser);
         return TokenService.generateToken(newUser);
     }

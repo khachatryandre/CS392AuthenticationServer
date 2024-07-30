@@ -14,16 +14,6 @@ public class User {
     private String firstName;
     private String lastName;
     private Integer age;
-    private Role role;
-
-    public User(String email, String password, String firstName, String lastName, Integer age, Role role) {
-        this.user_id = UUID.randomUUID();
-        this.email = email;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
-        this.role = role;
-    }
+    private String role;
 
 }

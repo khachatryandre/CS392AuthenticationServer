@@ -19,7 +19,7 @@ public class TokenService {
 
         return TokenGenerator.create()
                 .withAttribute("email", user.getEmail())
-                .withAttribute("role", user.getRole().toString())
+                .withAttribute("role", user.getRole())
                 .withIssuedAt(issueDate)
                 .withExpiresAt(expiration)
                 .build();
