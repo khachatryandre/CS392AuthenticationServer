@@ -15,11 +15,9 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final UserService userService;
-    private final TokenValidator tokenValidator;
 
-    public AuthController(UserService userService, TokenValidator tokenValidator) {
+    public AuthController(UserService userService) {
         this.userService = userService;
-        this.tokenValidator = tokenValidator;
     }
 
     @PostMapping("/register")
@@ -32,11 +30,6 @@ public class AuthController {
     public ResponseEntity<?> loginUser(@RequestBody UserLoginRequest userDTO) {
         String jwtToken = userService.login(userDTO.getEmail(), userDTO.getPassword());
         return new ResponseEntity<>(new UserLoginResponse("Login Successful", jwtToken), HttpStatus.CREATED);
-    }
-
-    @PostMapping("/validateToken")
-    public ResponseEntity<?> validateToken(@RequestBody String token) {
-        return new ResponseEntity<>(tokenValidator.validateToken(token), HttpStatus.OK);
     }
 
 }

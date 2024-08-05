@@ -1,20 +1,17 @@
-package am.aua.resourceserver;
+package am.aua.resourceserver.service;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@Component
+@Service
 @FeignClient(
-        name = "userfeign",
-        url = "localhost:8080/auth"
+        name = "authfeign",
+        url = "http://localhost:8080/token"
 )
 public interface AuthFeign {
-
-
     @PostMapping("/validateToken")
     ResponseEntity<?> validateToken(@RequestBody String token);
-
 }

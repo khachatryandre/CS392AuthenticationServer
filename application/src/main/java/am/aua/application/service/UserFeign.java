@@ -2,7 +2,6 @@ package am.aua.application.service;
 
 import am.aua.application.controller.model.request.UserLoginRequest;
 import am.aua.application.controller.model.request.UserRegistrationRequest;
-import am.aua.application.model.User;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;

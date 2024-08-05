@@ -1,4 +1,4 @@
-package am.aua.resourceserver;
+package am.aua.resourceserver.service;
 
 import org.springframework.stereotype.Service;
 
