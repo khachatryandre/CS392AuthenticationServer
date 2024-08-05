@@ -19,5 +19,6 @@ For UI run
 `npm run dev`
 Make sure to kill processes on these ports before running
 
-###UPDATED
+### UPDATED
+
 Run the docker-compose file in the base folder, access the UI from localhost:3000, use Postman for only backend with the localhost:8085 url
