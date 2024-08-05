@@ -5,6 +5,7 @@ import am.aua.authserver.service.helper.CustomJWTToken;
 import am.aua.authserver.service.helper.TokenGenerator;
 import org.apache.tomcat.util.json.JSONParser;
 import org.apache.tomcat.util.json.ParseException;
+import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -14,15 +15,16 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Objects;
 
+@Service
 public class TokenValidator {
 
-    public static void validateToken(String token) {
+    public boolean validateToken(String token) {
         String[] parts = token.split("\\.");
         CustomJWTToken customJWTToken = TokenGenerator.create(parts[0], parts[1]);
         boolean values = Objects.equals(token, customJWTToken.toString());
         Date expiration = extractExpirationDateFromToken(token);
         if (!values && expiration.compareTo(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant())) > 0) {
-            // TODO: only throw when condition is not met.
+            return true;
         } else {
             throw new InvalidTokenException();
         }

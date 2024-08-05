@@ -56,4 +56,11 @@ public class UserService {
         return encodedPlainPassword.equals(encodedPassword);
     }
 
+    public String createGuestUser() {
+        User user = new User();
+        user.setRole("Guest");
+        user.setFirstName("Guest");
+        return TokenService.generateToken(user);
+    }
+
 }
