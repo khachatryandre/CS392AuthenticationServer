@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @FeignClient(
         name = "resourceFeign",
-        url = "localhost:8082"
+        url = "localhost:8083"
 )
 public interface ResourceFeign {
 
