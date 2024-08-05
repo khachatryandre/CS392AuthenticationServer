@@ -24,7 +24,7 @@ const Home = () => {
   };
 
   const getPrivateFile = async () => {
-    const res = await fetchPrivateFile();
+    const res = await fetchPrivateFile(token);
 
     if (res.includes("invalid")) {
       setFileContents("Invalid token");
@@ -37,40 +37,44 @@ const Home = () => {
 
   return (
     <>
-      {!token && (
-        <>
-          <Link to="/login">
-            <Button>Log in</Button>
-          </Link>
-          <Link to="/register">
-            <Button>Sign up</Button>
-          </Link>
-          <Button onClick={getPublicFile}>View public file</Button>
-        </>
-      )}
-
-      {token && (
-        <>
-          <div>
+      <div>
+        <div className="flex flex-col gap-2">
+          {!token && (
             <div className="flex gap-3">
-              <Button
-                onClick={() => {
-                  localStorage.removeItem("token");
-                  window.location.reload();
-                }}
-              >
-                Log out
-              </Button>
+              <Link to="/login">
+                <Button>Log in</Button>
+              </Link>
+              <Link to="/register">
+                <Button>Sign up</Button>
+              </Link>
               <Button onClick={getPublicFile}>View public file</Button>
-              <Button onClick={getPrivateFile}>View private file</Button>
             </div>
-          </div>
-        </>
-      )}
+          )}
 
-      {fileContents && (
-        <pre className="bg-gray-100 p-4 rounded-md">{fileContents}</pre>
-      )}
+          {token && (
+            <>
+              <div>
+                <div className="flex gap-3">
+                  <Button
+                    onClick={() => {
+                      localStorage.removeItem("token");
+                      window.location.reload();
+                    }}
+                  >
+                    Log out
+                  </Button>
+                  <Button onClick={getPublicFile}>View public file</Button>
+                  <Button onClick={getPrivateFile}>View private file</Button>
+                </div>
+              </div>
+            </>
+          )}
+
+          {fileContents && (
+            <pre className="bg-gray-100 p-4 rounded-md">{fileContents}</pre>
+          )}
+        </div>
+      </div>
     </>
   );
 };

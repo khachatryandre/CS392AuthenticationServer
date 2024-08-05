@@ -1,4 +1,4 @@
-import { createLazyFileRoute } from "@tanstack/react-router";
+import { createLazyFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { loginApi, signupApi } from "../api/api";
 
@@ -9,6 +9,7 @@ const Login = () => {
   const [lastName, setLastName] = useState("");
   const [age, setAge] = useState("");
   const [isError, setIsError] = useState(false);
+  const navigate = useNavigate();
 
   const handleRegister = async () => {
     try {
@@ -27,6 +28,7 @@ const Login = () => {
       if (res.jwtToken) {
         localStorage.setItem("token", res.jwtToken);
       }
+      navigate({ to: "/" });
     } catch (error) {
       setIsError(true);
     }
