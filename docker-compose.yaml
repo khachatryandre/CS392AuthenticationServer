@@ -8,3 +8,24 @@ services:
     image: network:frontend
     ports:
       - "3000:3000"
+
+  backend:
+    build:
+      context: ./application
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+
+  authserver:
+    build:
+      context: ./authserver
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+
+  resourceserver:
+    build:
+      context: ./resourceserver
+      dockerfile: Dockerfile
+    ports:
+      - "8083:8083"

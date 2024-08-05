@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @Component
 @FeignClient (
         name = "userfeign",
-        url = "localhost:8082/auth"
+        url = "http://authserver:8082/auth"
 )
 public interface UserFeign {
 
