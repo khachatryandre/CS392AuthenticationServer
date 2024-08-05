@@ -28,10 +28,10 @@ public class ResourceController {
 
     @PostMapping("/getPrivateString")
     public ResponseEntity<?> getPrivateString(@RequestBody String token) {
-        if ("true".equals(authFeign.validateToken(token).getBody())) {
+        if (authFeign.validateToken(token)) {
             return new ResponseEntity<>(resourceService.getPrivateString(), HttpStatus.OK);
         } else {
-            return authFeign.validateToken(token);
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
 }
