@@ -6,7 +6,7 @@ export const signupApi = async ({
   userAge,
   userRole,
 }) => {
-  const res = await fetch("http://localhost:8081/register", {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -25,7 +25,7 @@ export const signupApi = async ({
 };
 
 export const loginApi = async (email, password) => {
-  const res = await fetch("http://localhost:8081/login", {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -37,7 +37,7 @@ export const loginApi = async (email, password) => {
 };
 
 export const fetchPublicFile = async (token) => {
-  const res = await fetch("http://localhost:8081/getPublicString", {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/getPublicString`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -49,7 +49,7 @@ export const fetchPublicFile = async (token) => {
 };
 
 export const fetchPrivateFile = async (token) => {
-  const res = await fetch("http://localhost:8081/getPrivateString", {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/getPrivateString`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

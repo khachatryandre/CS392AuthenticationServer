@@ -14,7 +14,7 @@ services:
       context: ./application
       dockerfile: Dockerfile
     ports:
-      - "8081:8081"
+      - "8085:8085"
 
   authserver:
     build:
