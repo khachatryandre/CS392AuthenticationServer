@@ -26,7 +26,7 @@ const Home = () => {
   const getPrivateFile = async () => {
     const res = await fetchPrivateFile();
 
-    if (res.includes("invalid") || true) {
+    if (res.includes("invalid")) {
       setFileContents("Invalid token");
       navigate({ to: "/login" });
       return;

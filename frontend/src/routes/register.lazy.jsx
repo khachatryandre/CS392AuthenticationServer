@@ -24,8 +24,8 @@ const Login = () => {
         setIsError(true);
       }
 
-      if (res.token) {
-        localStorage.setItem("token", res.token);
+      if (res.jwtToken) {
+        localStorage.setItem("token", res.jwtToken);
       }
     } catch (error) {
       setIsError(true);
